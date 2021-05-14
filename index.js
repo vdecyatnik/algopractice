@@ -58,19 +58,17 @@
 
 // console.log(sameFrequency(111,111));
 
-function averagePair(arr, target) {
-  let sortedArray = arr.sort();
-
+function averagePair(arr, num) {
   let left = 0;
-  let next = sortedArray.length -1;
+  let end = arr.length - 1;
 
-  for (var i = 0; i < sortedArray.length; i++) {
-    let average = arr[left] + arr[next] / 2;
-    if (average === target) {
-      return true;
-    }
-    else return false;
+  while (left < end) {
+    let avg = (arr[left] + arr[end]) / 2;
+    if (avg === num) return true;
+    else if (avg < num) left++;
+    else end--;
   }
+  return false;
 }
 
-console.log(averagePair([-1,0,3,4,5,6], 4.1));
+console.log(averagePair([1, 2, 3], 2.5));
